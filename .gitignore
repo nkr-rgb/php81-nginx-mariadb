@@ -1,0 +1,6 @@
+# MacのFinderが自動生成する不要ファイル
+.DS_Store
+docker-config/.DS_Store
+docker-config/**/.DS_Store
+my-app/.DS_Store
+my-app/**/.DS_Store
