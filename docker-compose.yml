@@ -6,7 +6,8 @@ services:
     ports:
       - '5173:5173'
     volumes:
-      - ./my-app:/var/www/
+      - ./my-app:/var/www/ #バインドマウント(双方向に同期)
+      # - /var/www/node_modules #ボリュームマウント(匿名ボリュームと名前付きボリュームの２種類ある)
     depends_on:
       - mariadb
 
