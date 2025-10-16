@@ -1,1 +1,4 @@
-
+/* tailwindcss v3以前の書き方 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

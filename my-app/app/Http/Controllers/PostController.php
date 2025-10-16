@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
     /**
      * Display a listing of the resource.
      */
@@ -28,6 +27,24 @@ class PostController extends Controller
           (object)['title' => '三番目の投稿', 'body' => 'これは三番目の投稿の本文です。']
         ];
         return view('posts.index2', ['posts' => $posts]);
+    }
+
+    public function indexNormalSql()
+    {
+        $post = new Post();
+        $posts = $post->GetPostsWithNormalSql();
+        return $posts;
+    }
+
+    public function createPostWithNormalSql()
+    {
+        $dummyData = (object)[
+            'user_id' => 1,
+            'title' => '素のSQLで新しい投稿',
+            'body' => '素のSQLでの新しい投稿の内容です。'
+        ];
+        $post = new Post();
+        $post->createPostWithNormalSql($dummyData);
     }
     
     /**
