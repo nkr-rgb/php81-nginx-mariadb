@@ -8,8 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -21,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_id',
     ];
 
     /**
@@ -33,6 +33,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    //1対多のリレーション 紐づく複数のポストを返す
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     /**
      * The attributes that should be cast.
      *
@@ -42,4 +48,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getUserById($id)
+    {
+        $user = User::find($id); //IDからユーザーを引っ張る
+        dd($user->posts); //ユーザーに紐づく投稿を取得
+        return $user;
+    }
 }
