@@ -2,5 +2,8 @@
 .DS_Store
 docker-config/.DS_Store
 docker-config/**/.DS_Store
+docker-config/mariadb/data/
+docker-config/mariadb/data/my.cnf
+docker-config/mariadb/data/sql
 my-app/.DS_Store
 my-app/**/.DS_Store
